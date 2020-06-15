@@ -8,21 +8,29 @@ namespace EntityFramework
     {
         static void Main(string[] args)
         {
-            //GravarUsandoAdoNet();
             //GravarUsandoEntity();
             //RecuperarProdutos();
-            ExcluirProdutos();
+            //ExcluirProdutos();
             //RecuperarProdutos();
-            AualizarProduto();
+            //AtualizarProduto();
+
+            //compra de 6 pães franceses
+            var paoFrances = new Produto();
+            paoFrances.Nome = "Pão Francês";
+            paoFrances.PrecoUnitario = 0.40;
+            paoFrances.Unidade = "Unidade";
+            paoFrances.Categoria = "Padaria";
+
+            var compra = new Compra();
+            compra.Quantidade = 6;
+            compra.Produto = paoFrances;
+            compra.Preco = paoFrances.PrecoUnitario * compra.Quantidade;
         }
 
-        private static void AualizarProduto()
-        {
-            // incluir um poduto
-            GravarUsandoEntity();
-            RecuperarProdutos();
+        #region Produtos Entity
 
-            // aualizar o produto
+        private static void AtualizarProduto()
+        {
 
             using (var repo = new ProdutoDAOEntity())
             {
@@ -72,6 +80,8 @@ namespace EntityFramework
             {
                 contexto.Adicionar(p);
             }
-        }      
+        }
+
+        #endregion
     }
 }
