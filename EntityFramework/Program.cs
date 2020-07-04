@@ -8,6 +8,26 @@ namespace EntityFramework
     {
         static void Main(string[] args)
         {
+            var fulano = new Cliente();
+            fulano.Nome = "Fulaninho de Tal";
+            fulano.EnderecoDeEntrega = new Endereco()
+            {
+                Numero = 12,
+                Logradouro = "Rua dos Inválidos",
+                Complemento = "sobrado",
+                Bairro = "Centro",
+                Cidade = "Cidade"
+            };
+
+            using (var contexto = new LojaContext())
+            {
+                contexto.Clientes.Add(fulano);
+
+            }
+        }
+
+        private static void MuitosParaMuitos()
+        {
             var p1 = new Produto() { Nome = "Suco de Laranja", Categoria = "Bebidas", PrecoUnitario = 8.79, Unidade = "Litros" };
 
             var promocaoDePascoa = new Promocao();
