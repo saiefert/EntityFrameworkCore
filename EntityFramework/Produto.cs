@@ -12,5 +12,6 @@ namespace EntityFramework
         public double PrecoUnitario { get; internal set; }
         public string Unidade { get; internal set; }
         public IList<PromocaoProduto> Promocoes { get; set; }
+        public IList<Compra> Compras { get; set; }
     }
 }
